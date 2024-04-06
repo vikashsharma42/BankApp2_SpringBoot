@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Online-Banking-App</title>
+	<link th:href="@{/css/main.css}" type="text/css" rel="stylesheet">
+	<link th:href='@{/css/bootstrap/css/bootstrap.css}' type='text/css' rel='stylesheet'>
+
+	<div th:insert="~{dashboard-nav.html}"></div>
+</head>
+
+<body th:style="|background : url(@{/images/home-2.jpg});|">
+
+	<!--Left OffCanvas Button-->
+	<div class="container d-flex mt-3">
+		<button class="btn btn-primary " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+			aria-controls="offcanvasExample">
+			<i class="fas fa-user-circle me-1"></i>view profile
+		</button>
+
+		<!--End of Left offCanvas Button-->
+		<!--Right offCanvas Button-->
+
+		<button class="btn btn-success ms-auto" type="button" data-bs-toggle="offcanvas"
+			data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fas fa-wallet me-1"></i>Start
+			Transaction
+		</button>
+	</div>
+	<!-- End of Right offCanvas Button-->
+
+	<!--Left offCanvas -->
+	<div class="offcanvas offcanvas-start bg-info text-white" tabindex="-1" id="offcanvasExample"
+		aria-labelledby="offcanvasExampleLabel">
+		<div class="offcanvas-header">
+			<h3 class="offcanvas-title" id="offcanvasExampleLabel"><i class="fa fa-user-circle  fa-3x"></i></h3>
+			<span class="display-6 fw-bold">User Profile</span>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+		</div>
+		<div class="offcanvas-body">
+			<div class="col-md-12">
+				<div class="col-md-12 table-responsive">
+					<table class="table table-bordered table-hover">
+						<tbody class="bg-warning">
+							<tr>
+								<td class="text-primary fw-bold">User Id</td>
+								<td class="text-primary fw-bold" th:text="${user.userName}"></td>
+							</tr>
+							<tr>
+								<td class="text-primary fw-bold">First Name</td>
+								<td class="text-primary fw-bold" th:text="${user.FirstName}"></td>
+							</tr>
+							<tr>
+								<td class="text-primary fw-bold">Last Name</td>
+								<td class="text-primary fw-bold" th:text="${user.LastName}">dghrh</td>
+							</tr>
+							<tr>
+								<td class="text-primary fw-bold">Address</td>
+								<td class="text-primary fw-bold" th:text="${user.city}"></td>
+							</tr>
+							<tr>
+								<td class="text-primary fw-bold">Phone</td>
+								<td class="text-primary fw-bold" th:text="${user.phone}"></td>
+							</tr>
+							<tr>
+								<td class="text-primary fw-bold">Account No</td>
+								<td class="text-primary fw-bold" th:text="${user.account}"></td>
+							</tr>
+							<tr>
+								<td class="text-primary fw-bold">Age</td>
+								<td class="text-primary fw-bold" th:text="${user.age}"></td>
+							</tr>
+							<tr>
+								<td class="text-primary fw-bold">Email</td>
+								<td class="text-primary fw-bold" th:text="${user.email}"></td>
+							</tr>
+							<tr>
+								<td class="text-primary fw-bold">Balance</td>
+								<td class="text-primary fw-bold" th:text="${user.balance}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="offcanvas offcanvas-end bg-success text-white" tabindex="-1" id="offcanvasRight"
+		aria-labelledby="offcanvasRightLabel">
+		<div class="offcanvas-header">
+			<h5 class="offcanvas-title" id="offcanvasRightLabel"><i class="fas fa-money-bill-transfer me-2"></i>Transact
+			</h5>
+			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+		</div>
+		<div class="container">
+			<div class="offcanvas-body">
+				<small class="fw-bold">
+					Choose any Option to perform a transaction
+				</small>
+				<select class="form-select form-control py-3" id="transact-type">
+					<option value="hidden">--Transaction Type--</option>
+					<option value="withdraw">Withdraw</option>
+					<option value="deposit">Deposit</option>
+					<option value="transfer">Transfer</option>
+				</select>
+			</div>
+			<div class="container payment-card">
+				<div class="card mt-1">
+					<div class="card-body">
+						<form action="/payment" method="post">
+							<div class="form-group mt-1">
+								<input name="account_number" type="text" class="form-control"
+									placeholder="Account Holder Number">
+							</div>
+							<div class="form-group mt-1">
+								<input name="beneficiary_account" type="text" class="form-control"
+									placeholder="Beneficiary Account Number">
+							</div>
+							<div class="form-group mt-1">
+								<input name="reference" type="text" class="form-control" placeholder="Enter reference">
+								<div class="form-group mt-1">
+									<input name="amount" type="text" class="form-control" placeholder="Enter Amount">
+								</div>
+								<button type="submit" id="Transact" class="btn btn-sm btn-primary mt-1">Pay</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<!--End of Payment Card-->
+
+			<!--Transfer Card-->
+			<div class="container transfer-card alert alert-success">
+				<div class="card mt-1">
+					<div class="card-body">
+						<form th:action="@{/transfer}" method="post">
+							<div class="form-group mt-1">
+								<input name="account" type="text" class="form-control" th:value="${user.account}"
+									readonly>
+							</div>
+							<div class="form-group mt-3">
+								<input name="transfer_account" type="text" class="form-control"
+									placeholder="Beneficiary Account Number" maxlength="17" onkeypress="return isNumberKey(event)" required>
+							</div>
+							<div class="form-group mt-3">
+								<div class="form-group mt-1">
+									<input name="amount" type="text" maxlength="6" class="form-control"
+										placeholder="Enter Transfer Amount" onkeypress="return isNumberKey(event)"
+										onkeyup="return checkTransferLimit(this)" required>
+									<small class="fw-bold mt-2" id="info"></small>
+								</div>
+								<button id="Transfer" type="submit"
+									class="btn btn-sm btn-primary mt-2 offset-md-5">Transfer</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<!--End of Accounts Card-->
+
+			<!--Deposit Card-->
+
+			<div class="container deposit-card alert alert-success">
+				<div class="card mt-1">
+					<div class="card-body">
+						<form th:action="@{/deposite}" method="post">
+							<input name="account" type="text" class="form-control" th:value="${user.account}" readonly>
+							<div class="form-group mt-3">
+								<div class="form-group mt-1">
+									<input name="amount" id="amount" type="text" class="form-control"
+										placeholder="Enter Deposit Amount" onkeypress="return isNumberKey(event)"
+										onkeyup="return checkDepositeLimit(this)" maxlength="6" required>
+									<small class="fw-bold mt-2" id="msg"></small>
+								</div>
+								<button type="submit" id="deposit"
+									class="btn btn-sm btn-primary mt-2 offset-md-5">Deposit</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<!--End of Deposits Card-->
+
+			<!--Withdraw Card-->
+			<div class="container withdraw-card alert alert-success">
+				<div class="card mt-1">
+					<div class="card-body">
+						<form th:action="@{/withdraw}" method="post">
+							<div class="form-group mt-1">
+								<input name="account" type="text" class="form-control" th:value="${user.account}"
+									readonly>
+							</div>
+							<div class="form-group mt-3">
+								<div class="form-group mt-1">
+									<input name="amount" id="amount" type="text" class="form-control"
+										placeholder="Withdrawal Amount" maxlength="6"
+										onkeypress="return isNumberKey(event)" onkeyup="return checkWithdrawLimit(this)"
+										required>
+									<small class="fw-bold mt-2" id="warning"></small>
+								</div>
+								<button type="submit" id="withdraw"
+									class="btn btn-sm btn-primary mt-2 offset-md-5">Withdraw</button>
+							</div>
+						</form>
+					</div>
+				</div>
+
+			</div>
+			<!--End of Withdraw Card-->
+		</div>
+	</div>
+</body>
+<script th:src="@{/css/bootstrap/js/bootstrap.bundle.js}"></script>
+<script th:src="@{/css/main.js}"></script>
+
+</html>

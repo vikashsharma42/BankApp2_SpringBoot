@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Online_Banking-App</title>
+	<link th:href="@{/css/bootstrap/css/bootstrap.css}" type="text/css" rel="stylesheet">
+	<link th:href="@{/css/default.css}" type="text/css" rel="stylesheet">
+	<link th:href="@{/css/fontawesome/css/all.css}" type="text/css" rel="stylesheet">
+	<script th:src="@{/css/main.js}"></script>
+	<div th:insert="~{header.html}"></div>
+</head>
+
+<body style="overflow-x: hidden;">
+	<div class="container-fluid py-5" th:style="|background : url(@{/images/home-2.jpg});|">
+		<div class="row text-white">
+			<div class="col-md-3 mt-5" sec:authorize="isAuthenticated()">
+				<small class="fw-bold text-light" style="font-size: 1.3rem;">Welcome back, Mr.
+					<span class="text-danger" th:text="${userName}"></span></small>
+			</div>
+			<div class="col-md-3 mt-5" th:unless="${#authorization.expression('isAuthenticated()')}"></div>
+			<div class="col-md-6 justify-content-center">
+				<h1 class="display-4 fw-bold text-info mt-5 text-center">Banking Online</h1>
+			</div>
+		</div>
+		<div class="row text-white">
+			<div class="col-md-3"></div>
+			<div class="col-md-6 justify-content-center">
+				<div class="col-md-12" id="typingContainer">
+					<img src="/images/success.png" th:style="|margin-left: 40%;|">
+					<div id="typingTextContainer" class="col-md-12 fw-bold fs-4 text-white" style="height: 38vh;">
+
+						<p id="typingText" class="col-md-12">
+							Internet Banking means a secured internet-based electronic service offered by the bank,
+							which enables the customer to connect with the bank and transact on a nominated account by
+							using a computer and accessing via our website. This includes transactions processed through
+							the mobile banking facility.
+							computer and accessing via our website. This includes transactions processed through the
+							mobile banking facility.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="offset-5 mt-3">
+				<a class="btn btn-primary" th:unless="${#authorization.expression('isAuthenticated')}" href="/register"
+					role="button">Register</a>
+				<a class="btn btn-primary" th:if="${#authorization.expression('isAuthenticated')}" href="/dashboard"
+					role="button"><i class="fa fa-dashboard me-1"></i>User DashBoard</a>
+				<a class="btn btn-primary" th:unless="${#authorization.expression('isAuthenticated')}" href="/"
+					role="button">Learn more</a>
+			</div>
+		</div>
+	</div>
+	<div class="container  bg-info">
+		<h2 class="text-center mt-5 py-5 fw-bold display-6 text-primary">Benefits of NetBanking</h2>
+		<!-- First Row -->
+		<div class="row mt-5">
+			<div class="col-md-4">
+				<img th:src="@{/images/Fund-transfer.png}" alt="Image 1" class="offset-4">
+				<h3 class="text-center text-warning">Money Transfer</h3>
+				<p class="text-center text-white fw-bold">Pay your maid/driver’s salary, society maintenance & transfer
+					money to your friends and family through NEFT/RTGS/IMPS</p>
+			</div>
+			<div class="col-md-4">
+				<img th:src="@{/images/Bill-Payments.png}" alt="Image 2" class="offset-4">
+				<h3 class="text-center text-warning">Pay Bills</h3>
+				<p class="text-center text-white fw-bold">Pay your electricity, mobile, gas,water and DTH Bills.Recharge
+					your pre-paid mobile number.</p>
+			</div>
+			<div class="col-md-4">
+				<img th:src="@{/images/Shop-online.png}" alt="Image 3" class="offset-4">
+				<h3 class="text-center text-warning">Shop online</h3>
+				<p class="text-center text-white fw-bold">Shop online across Fashion, Food, Travel and Entertainment
+					using NetBanking as a payment option</p>
+			</div>
+		</div>
+		<!-- Second Row -->
+		<div class="row mt-5 ">
+			<div class="col-md-4">
+				<img th:src="@{/images/Upgrade-your-lifestyle.png}" alt="Image 4" class="offset-4">
+				<h3 class="text-center text-warning">Upgrade your lifestyle</h3>
+				<p class="text-center text-white fw-bold">Empower yourself with the various tailor made loan &
+					credit/debit card options to suits your need.</p>
+			</div>
+			<div class="col-md-4">
+				<img th:src="@{/images/Investments.png}" alt="Image 5" class="offset-4">
+				<h3 class="text-center text-warning">Invest</h3>
+				<p class="text-center text-white fw-bold">Create wealth by purchasing monetary assets like FD’s Mutual
+					Funds, Shares & Insurance</p>
+			</div>
+			<div class="col-md-4">
+				<img th:src="@{/images/Account-Management.png}" alt="Image 6" class="offset-4">
+				<h3 class="text-center text-warning">Account Management</h3>
+				<p class="text-center text-white fw-bold"> Manage, keep a track & control your bank account & expenses
+				</p><br><br><br>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3 offset-5 mt-5" th:style="|text-align:justify; border: 2px dashed #00579c;|">
+		<h4 class="text-danger mt-2">Safe & Secure <span class="text-primary">[Internet Banking Usage Guidelines]</span>
+		</h4>
+		<div class="col-md-9 offset-1 py-4">
+			<marquee direction="up" behavior="scroll" scrolldelay="100" height="150" onmouseover="this.stop();"
+				onmouseout="this.start();">
+				<div class="right-things common-things" th:style="|text-align:justify;|">
+					<ul>
+						<img th:src="@{/images/success.png}" alt="" th:style="|margin-left: 40%;|" />
+						<li>Access your bank website only by typing the URL in address bar of browser.</li>
+						<li>Change your Internet Banking password at regular intervals.</li>
+						<li>Immediately change your passwords if you have accidentally revealed your credentials.</li>
+						<li>Use Virtual keyboard feature while logging into your internet banking account.</li>
+						<li>Always logout when you exit Net Banking.Do not directly close the browser.</li>
+						<li>Phishing is a fraudulent attempt,usually made through emails/calls/SMS to capture your
+							confidential data like NetBanking Id/Password, mobile no, email Id /Password,Card no
+							/PIN/CVV no etc.Please report immediately on antiphishing[Dot]ciso[At]the
+							[rate]unionbankofindia[Dot] bank if you receive any such email/SMS or Phone call.</li>
+						<li>Be sure the URL you are accessing has 'https://'. The 's' indicates secured and the site
+							uses encryption.</li>
+						<li>Always ensure latest version of Operating System with updated security patches.</li>
+						<li>Regularly update Browser and Antivirus with latest available definitions.</li>
+						<li>Always check the last log-in date and time in the post login page.</li>
+						<li>Ensure firewall is on and Antivirus is scanning the system regularly.</li>
+						<li>Avoid accessing Internet Banking from Cyber Cafes or shared PCs.</li>
+						<li>Check your account statements periodically to ensure that all the entries are correctly
+							captured. In case of any discrepancy, inform the bank immediately</li>
+					</ul>
+				</div>
+				<div class="wrong-things common-things" style='text-align:justify;'>
+					<ul>
+						<img th:src="@{/images/wrong-icon.png}" alt="" th:style="|margin-left: 40%;|" />
+						<li>Never respond to e-mails/embedded links /calls asking you to update or verify
+							UserIDs/Passwords/Card no/CVV etc. Union Bank or any of its representative will never send
+							you e-mails/SMS or calls you over phone to get your confidential details of your account/
+							PIN/OTP Password or personal details.</li>
+
+						<li>Never enter login or other sensitive information in any pop up window.</li>
+
+						<li>Do not be victim of SIM SWAPS, immediately investigate when you notice that you are not
+							receiving call and message or getting SIM Registration fail. Keep your phone switched on and
+							check alerts from Union Bank of India.</li>
+
+						<li>Never respond to any SIM Swap Request even from mobile operators.</li>
+					</ul>
+				</div>
+			</marquee>
+		</div>
+	</div>
+	<div th:insert="~{footer.html}"></div>
+	<script th:src="@{/css/bootstrap/js/bootstrap.js}"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			startTypingEffect();
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Online-Banking-App</title>
+
+	
+	<link th:href="@{/css/bootstrap/css/bootstrap.css}" type="text/css" rel="stylesheet">
+	<link th:href="@{/css/default.css}" type="text/css" rel="stylesheet">
+	<link th:href="@{/css/main.css}" type="text/css" rel="stylesheet">
+	<link th:href="@{/css/fontawesome/css/all.css}" type="text/css" rel="stylesheet">
+
+	<title>register</title>
+
+</head>
+
+<body th:style="|background : url(@{/images/home-2.jpg});|">
+<div class="d-flex align-items-center justify-content-center">
+		
+		<div class="card w-auto mt-5">		
+			<div class="card-body">			
+				<div class="card-header mb-2">
+					<h4><i class="fa fa-edit"></i> Register</h4>
+				</div>
+				<form action="/registration" class="reg-form" method="post">
+					<div class="row">					
+						<div class="form-group col">
+							<div class="input-group mb-3">
+								<input type="text" name="username" required class="form-control form-control-lg"
+									placeholder="Username">
+							</div>
+						</div>					
+						<div class="form-group col">
+							<div class="input-group mb-3">
+								<input type="text" name="fname" required class="form-control form-control-lg"
+									placeholder="Firstname">
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						
+						<div class="form-group col">
+							<div class="input-group mb-3">
+								<input type="text" name="lname" required class="form-control form-control-lg"
+									placeholder="Lastname">
+							</div>
+						</div>
+						
+						<div class="form-group col">
+							<div class="input-group mb-3">
+								<input type="text" name="age" required class="form-control form-control-lg"
+									placeholder="Age">
+							</div>
+						</div>
+						
+					</div>
+					<div class="row">
+						
+						<div class="form-group col">
+							<div class="input-group mb-3">
+								<input type="email" name="email" required class="form-control form-control-lg"
+									placeholder="Enter your email">
+							</div>
+						</div>
+						
+					</div>
+					<div class="row">
+						
+						<div class="form-group col">
+							<div class="input-group mb-3">
+								<input type="text" name="city" required class="form-control form-control-lg"
+									placeholder="Enter City">
+							</div>
+						</div>
+						
+						<div class="form-group col">
+							<div class="input-group mb-3">
+
+								<input type="text" name="phone" required class="form-control form-control-lg"
+									placeholder="Enter phone">
+							</div>
+						</div>
+						
+					</div>
+
+					<div class="row">
+						
+						<div class="form-group col">
+							<div class="input-group mb-3">
+								<input type="password" name="password" required class="form-control form-control-lg"
+									placeholder="Enter password">
+							</div>
+						</div>
+						
+						<div class="form-group col">
+							<div class="input-group mb-3">
+
+								<input type="password" name="confirm_password" required
+									class="form-control form-control-lg" placeholder="confirm_password">
+							</div>
+						</div>
+						
+					</div>
+
+					<div class="form-group col button-submit">
+						<div class="btn-primary">
+							<input type="submit" name="Register" required class="form-control"
+								style="background-color: orangered;">
+						</div>
+					</div>
+				</form>
+				<div class="form-control-lg">
+					Already have an account ? <span class="fa fa-lock-open"></span><a href="/login">Login</a>
+				</div>
+				<div class="alert-warning">
+					<small class="fa fa-arrow-alt-circle-left form-control-lg"></small><a href="javascript:history.back()">Back</a>
+				</div>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+</body>
+
+</html>

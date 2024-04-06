@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>OnlineBankingApp</title>
+	<!-- Bootstrap -->
+	<link th:href="@{/css/bootstrap/css/bootstrap.css}" type="text/css" rel="stylesheet">
+	<link th:href="@{/css/default.css}" type="text/css" rel="stylesheet">
+	<link th:href="@{/css/main.css}" type="text/css" rel="stylesheet">
+	<link th:href="@{/css/fontawesome/css/all.css}" type="text/css" rel="stylesheet">
+	<div th:insert="~{header.html}"></div>
+</head>
+
+<body th:style="|background : url(@{/images/home-2.jpg});|">
+	<br><br>
+	<div class="container mt-5">
+		<div class="row justify-content-center align-items-center">
+			<div class="col-md-6">
+				<div class="card border-primary mb-3">
+					<div class="card-header text-center fw-bold text-warning">
+						<span class="fa fa-user-circle"></span>Contact us
+					</div>
+					<div class="card-body text-primary">
+						<form th:action="@{/sendEmail}" method="get">
+							<div class="row g-3">
+								<div class="col-md-6">
+									<div class="form-floating">
+										<input type="text" class="form-control border-0 bg-white" id="name"
+											placeholder="Your Name">
+										<label for="name">Your Name</label>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-floating">
+										<input type="text" class="form-control border-0 bg-white" id="userid"
+											th:value="${user}" readonly>
+										<label for="text">Your username</label>
+									</div>
+								</div>
+								<div class="row g-3">
+									<div class="col-md-6">
+										<div class="form-floating">
+											<input type="email" class="form-control border-0 bg-white" name="email"
+												placeholder="Your Email" required>
+											<label for="email">Your Email</label>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-floating">
+											<input type="text" class="form-control border-0 bg-white" name="subject"
+												placeholder="Subject" required>
+											<label for="subject">Subject</label>
+										</div>
+									</div>
+									<div class="col-12">
+										<div class="form-floating">
+											<textarea class="form-control border-0 bg-white"
+												placeholder="Leave a message here" name="message" style="height: 200px"
+												required></textarea>
+											<label for="message">Message</label>
+										</div>
+									</div>
+									<div class="alert alert-success fw-bold" th:if="${param.success}">
+										Contact form submitted successfully!
+										</div>
+									<div class="col-12">
+										<button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
+									</div>
+								</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div th:insert="~{footer.html}"></div>
+	<script th:src="@{/css/bootstrap/js/bootstrap.js}"></script>
+</body>
+
+</html>

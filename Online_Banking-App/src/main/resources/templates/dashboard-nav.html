@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>OnlineBankingApp</title>
+
+	<link th:href="@{/css/bootstrap/css/bootstrap.css}" type="text/css" rel="stylesheet">
+	<link th:href="@{/css/fontawesome/css/all.css}" type="text/css" rel="stylesheet">
+
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg bg-primary">
+		<a class="navbar-brand text-white fw-bold" href="/home"><i class="fa fa-bank me-2"></i>Online Banking-App</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+			aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<a class="nav-link text-white" href="/home"><i class="fa fa-dashboard me-2"></i>Dashboard</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-white" href="/transaction"><i class="fa fa-history me-2"></i>Transaction
+						history</a>
+				</li>
+				<li class="nav-item bg-success btn btn-sm ">
+					<a class="nav-link text-white fw-bold" href="/contact-us"><i class="fa fa-smile me-2"></i>Welcome</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-white" href="/logout"><i class="fa fa-power-off me-2"></i>Logout</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+</body>
+
+</html>

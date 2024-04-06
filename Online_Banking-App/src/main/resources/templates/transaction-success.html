@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Online-Banking-App</title>
+    <link th:href="@{/css/bootstrap/css/bootstrap.css}" type="text/css" rel="stylesheet">
+    <link th:href="@{/css/main.css}" type="text/css" rel="stylesheet">
+    <link th:href="@{/css/default.css}" type="text/css" rel="stylesheet">
+    <link th:href="@{/css/fontawesome/css/all.css}" type="text/css" rel="stylesheet">
+</head>
+<body class=" d-flex align-items-center justify-content-center content" th:style="|background : url(@{/images/home-2.jpg});|">
+        <div class="card alert alert-success">
+            <div class="card-header">
+                <p class="text-success fw-bold"><i class="fas fa-check-circle"></i> Transaction-Success</p>
+                <hr>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-success"th:if="${message}">
+                    <i class="fa fa-exclamation-triangle"></i>
+                    <p class="text-warning fw-bold" th:text="${message}"></p>
+                </div>
+            </div>
+            <hr>
+            <a class = "btn btn-sm btn-danger w-25 offset-md-4" href="javascript:history.back()">
+               <i class = "fa fa-arrow-alt-circle-left me-1"></i>Back
+            </a>
+    </div>
+</body>
+</html>

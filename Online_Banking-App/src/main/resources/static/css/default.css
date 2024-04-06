@@ -1,0 +1,28 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center;   
+}
+.card .form-control{
+    margin: 10px 0px;
+    box-shadow: 0px 3px 6px rgb(0,14,53)
+}
+
+.button-submit{
+    margin: 10px 0px;
+    box-shadow: 0px 3px 6px rgb(0,14,53)
+}
+.wrapper{
+    padding: 15px;
+    background-color:#6c757d;
+    width: auto;
+    height: auto;
+}
+.common-things ul li{
+	text-decoration: none;
+	list-style: none;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
